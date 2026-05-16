@@ -1,0 +1,8 @@
+{
+  "name": "Skymlabs | Build What the Future Runs On",
+  "description": "Premium technology company specializing in AI and intelligent software solutions for industries including retail, smart cities, and infrastructure.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
