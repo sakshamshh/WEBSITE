@@ -1,40 +1,29 @@
 "use client"
 
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
+import { motion, useInView, useMotionValue, useTransform,  } from "framer-motion"
 import { useRef, useEffect, useState } from "react"
 
 const reasons = [
+  const reasons = [
   {
     number: "01",
     title: "Deep Domain Expertise",
-    description:
-      "Our team brings years of specialized experience in AI, computer vision, and intelligent systems across multiple industries.",
-    stat: "10+",
-    statLabel: "Years Experience",
+    description: "Our team brings specialized experience in AI, computer vision, and intelligent systems. We understand the domains we build for — deeply.",
   },
   {
     number: "02",
     title: "Production-Grade Quality",
-    description:
-      "We don't just build prototypes. Every solution is engineered for reliability, security, and real-world performance at scale.",
-    stat: "99.9%",
-    statLabel: "Uptime",
+    description: "We don't just build prototypes. Every solution is engineered for reliability, security, and real-world performance at scale.",
   },
   {
     number: "03",
     title: "Transparent Partnership",
-    description:
-      "Clear communication, honest timelines, and collaborative problem-solving. We succeed when you succeed.",
-    stat: "100%",
-    statLabel: "Client Satisfaction",
+    description: "Clear communication, honest timelines, and collaborative problem-solving. We succeed when you succeed.",
   },
   {
     number: "04",
     title: "Rapid Iteration",
-    description:
-      "Agile development with continuous feedback loops ensures we deliver value quickly and adapt to your evolving needs.",
-    stat: "2x",
-    statLabel: "Faster Delivery",
+    description: "Agile development with continuous feedback loops ensures we deliver value quickly and adapt to your evolving needs.",
   },
 ]
 
@@ -134,7 +123,7 @@ function ReasonCard({ reason, index }: { reason: typeof reasons[0]; index: numbe
             className="flex items-baseline gap-2"
           >
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              <AnimatedNumber value={reason.stat} />
+             
             </span>
             <span className="text-sm text-muted-foreground">{reason.statLabel}</span>
           </motion.div>

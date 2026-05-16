@@ -9,10 +9,10 @@ const products = [
     icon: Store,
     title: "Auris",
     description:
-      "A retail intelligence platform that turns your existing CCTV cameras into a powerful analytics engine — no new hardware required. Real-time footfall heatmaps, dwell time tracking, multi-camera unified view, and fully DPDP compliant with on-premise processing.",
+      "Auris turns your existing CCTV cameras into a powerful retail intelligence engine — no new hardware required. It watches your camera feeds, generates real-time footfall heatmaps, tracks dwell time across every zone, and delivers AI-powered daily reports straight to WhatsApp. All processing happens on-premise — footage never leaves your building.",
     features: [
-      "Connects to existing cameras — no hardware replacement",
-      "Real-time footfall heatmaps across every zone",
+      "Connects to your existing camera infrastructure",
+      "Real-time footfall heatmaps across every store zone",
       "Dwell time tracking per area",
       "Cloud-synced dashboard with daily AI reports to WhatsApp",
     ],
@@ -24,7 +24,7 @@ const products = [
     icon: TrafficCone,
     title: "TrafficIQ",
     description:
-      "Intelligent traffic signal management system that optimizes flow, reduces congestion, and adapts to real-time conditions using advanced AI algorithms.",
+      "AI-powered traffic signal management that reduces congestion, optimises signal timing in real time, and prioritises emergency vehicles — making cities move smarter. Patent filed.",
     features: [],
     color: "from-accent to-chart-3",
     bgGlow: "bg-accent/20",
@@ -38,11 +38,9 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-
   const springConfig = { damping: 20, stiffness: 200 }
   const xSpring = useSpring(x, springConfig)
   const ySpring = useSpring(y, springConfig)
-
   const rotateX = useTransform(ySpring, [-0.5, 0.5], ["5deg", "-5deg"])
   const rotateY = useTransform(xSpring, [-0.5, 0.5], ["-5deg", "5deg"])
 
@@ -67,73 +65,41 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.7, delay: index * 0.2, ease: [0.215, 0.61, 0.355, 1] }}
       className="relative group"
     >
-      {/* Glow effect */}
       <motion.div
         className={`absolute inset-0 ${product.bgGlow} rounded-2xl blur-2xl`}
         animate={{ opacity: isHovered ? 0.6 : 0, scale: isHovered ? 1.1 : 1 }}
         transition={{ duration: 0.3 }}
       />
-      
       <div className="relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/40 transition-colors duration-300">
         {product.comingSoon && (
-          <motion.div
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute top-4 right-4 z-10"
-          >
-            <motion.span
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-accent/20 to-chart-3/20 text-accent border border-accent/30"
-            >
+          <div className="absolute top-4 right-4 z-10">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-accent/20 to-chart-3/20 text-accent border border-accent/30">
               Coming Soon
-            </motion.span>
-          </motion.div>
+            </span>
+          </div>
         )}
-
-        {/* Animated gradient background on hover */}
         <motion.div
           className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0`}
           animate={{ opacity: isHovered ? 0.05 : 0 }}
           transition={{ duration: 0.3 }}
         />
-
         <div className="relative p-8">
           <motion.div
             className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center mb-6`}
-            animate={{ 
-              rotate: isHovered ? [0, -5, 5, 0] : 0,
-              scale: isHovered ? 1.1 : 1,
-            }}
+            animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ duration: 0.5 }}
-            style={{ transformStyle: "preserve-3d", transform: "translateZ(20px)" }}
           >
             <product.icon className="w-7 h-7 text-white" />
           </motion.div>
-
-          <motion.h3
-            className="text-xl font-bold text-foreground mb-3"
-            style={{ transformStyle: "preserve-3d", transform: "translateZ(10px)" }}
-          >
-            {product.title}
-          </motion.h3>
-
-          <p className="text-muted-foreground leading-relaxed">
-            {product.description}
-          </p>
-
+          <h3 className="text-xl font-bold text-foreground mb-3">{product.title}</h3>
+          <p className="text-muted-foreground leading-relaxed">{product.description}</p>
           {product.features && product.features.length > 0 && (
             <ul className="mt-4 space-y-2">
               {product.features.map((feature, idx) => (
@@ -145,36 +111,22 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
                   transition={{ delay: 0.3 + idx * 0.1 }}
                   className="flex items-start gap-2 text-sm text-muted-foreground"
                 >
-                  <motion.span
-                    className="text-primary mt-0.5"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 0.5, delay: idx * 0.2 }}
-                  >
-                    &#10003;
-                  </motion.span>
+                  <span className="text-primary mt-0.5">&#10003;</span>
                   {feature}
                 </motion.li>
               ))}
             </ul>
           )}
-
           {!product.comingSoon && (
             <motion.div
-              className="mt-6 inline-flex items-center gap-2 text-primary font-medium text-sm group/link cursor-pointer"
+              className="mt-6 inline-flex items-center gap-2 text-primary font-medium text-sm cursor-pointer"
               whileHover={{ x: 5 }}
             >
               Learn more
-              <motion.span
-                animate={{ x: isHovered ? 5 : 0, y: isHovered ? -5 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ArrowUpRight className="w-4 h-4" />
-              </motion.span>
+              <ArrowUpRight className="w-4 h-4" />
             </motion.div>
           )}
         </div>
-
-        {/* Shine effect */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
           animate={{ x: isHovered ? "200%" : "-100%" }}
@@ -191,7 +143,6 @@ export function Products() {
 
   return (
     <section id="products" className="py-16 lg:py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Background decoration */}
       <motion.div
         className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
         animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
@@ -202,7 +153,6 @@ export function Products() {
         animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         <motion.div
           ref={ref}
@@ -228,11 +178,9 @@ export function Products() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Powerful AI solutions designed to transform industries and deliver
-            measurable results.
+            Powerful AI solutions designed to transform industries and deliver measurable results.
           </motion.p>
         </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto" style={{ perspective: 1000 }}>
           {products.map((product, index) => (
             <ProductCard key={product.title} product={product} index={index} />
