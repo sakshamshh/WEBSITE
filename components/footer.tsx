@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Mail, ArrowUpRight } from "lucide-react"
+import { Mail, ArrowUpRight, Phone, Instagram } from "lucide-react"
 
 const footerLinks = {
   Products: [
@@ -44,9 +44,10 @@ export function Footer() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-5 gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
         >
-          <motion.div variants={itemVariants} className="md:col-span-2">
+          {/* Brand */}
+          <motion.div variants={itemVariants} className="md:col-span-2 lg:col-span-1">
             <motion.a
               href="#"
               className="inline-block text-2xl font-bold tracking-tight"
@@ -60,46 +61,82 @@ export function Footer() {
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
               Building intelligent software that transforms industries and creates lasting impact.
             </p>
-            <div className="flex gap-4 mt-6">
-              <motion.a
-                href="mailto:hello@skymlabs.com"
-                aria-label="Email"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                transition={{ delay: 0.3, type: "spring", stiffness: 500, damping: 30 }}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-              </motion.a>
-            </div>
           </motion.div>
 
-          {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
-            <motion.div key={category} variants={itemVariants}>
-              <h3 className="text-sm font-semibold text-foreground mb-4">{category}</h3>
-              <ul className="space-y-3">
-                {links.map((link, linkIndex) => (
-                  <motion.li
-                    key={link.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                    transition={{ delay: 0.2 + categoryIndex * 0.1 + linkIndex * 0.05 }}
+          {/* Contact */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-sm font-semibold text-foreground mb-4">Contact</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:contact@skymlabs.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Mail className="w-4 h-4" />
+                  contact@skymlabs.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+919818167998" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Phone className="w-4 h-4" />
+                  +91 98181 67998
+                </a>
+              </li>
+              <li>
+                <a href="tel:+918178332368" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Phone className="w-4 h-4" />
+                  +91 81783 32368
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Founders */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-sm font-semibold text-foreground mb-4">Founders</h3>
+            <ul className="space-y-4">
+              <li>
+                <p className="text-sm font-medium text-foreground">Saksham Sharma</p>
+                <p className="text-xs text-muted-foreground mb-1">Founder</p>
+                <div className="flex items-center gap-3">
+                  <a href="mailto:saksham@skymlabs.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Mail className="w-4 h-4" />
+                  </a>
+                  <a href="https://www.instagram.com/sakshamsh" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                </div>
+              </li>
+              <li>
+                <p className="text-sm font-medium text-foreground">Ayush Ranjan</p>
+                <p className="text-xs text-muted-foreground mb-1">Founder</p>
+                <div className="flex items-center gap-3">
+                  <a href="mailto:ayush@skymlabs.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Mail className="w-4 h-4" />
+                  </a>
+                  <a href="https://www.instagram.com/_._x__7" target="_blank" rel="noopener noreferrer" className="text-muted-forearding hover:text-primary transition-colors">
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Links */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-sm font-semibold text-foreground mb-4">Company</h3>
+            <ul className="space-y-3">
+              {footerLinks.Company.map((link) => (
+                <li key={link.name}>
+                  <motion.a
+                    href={link.href}
+                    className="group text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
+                    whileHover={{ x: 3 }}
                   >
-                    <motion.a
-                      href={link.href}
-                      className="group text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
-                      whileHover={{ x: 3 }}
-                    >
-                      {link.name}
-                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100" />
-                    </motion.a>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+                    {link.name}
+                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100" />
+                  </motion.a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </motion.div>
 
         <motion.div
