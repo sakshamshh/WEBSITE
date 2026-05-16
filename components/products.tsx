@@ -24,7 +24,7 @@ const products = [
     icon: TrafficCone,
     title: "TrafficIQ",
     description:
-      "AI-powered traffic signal management that reduces congestion, optimises signal timing in real time, and prioritises emergency vehicles — making cities move smarter. Patent filed.",
+      "AI-powered traffic signal management that reduces congestion, optimises signal timing in real time, and prioritises emergency vehicles — making cities move smarter.",
     features: [],
     color: "from-accent to-chart-3",
     bgGlow: "bg-accent/20",
