@@ -8,7 +8,7 @@ const navLinks = [
   { name: 'Products', href: '#products' },
   { name: 'Why Us', href: '#why-us' },
   { name: 'Industries', href: '#industries' },
-  { name: 'Contact', href: '#contact' },
+
 ];
 
 export default function Navbar() {
