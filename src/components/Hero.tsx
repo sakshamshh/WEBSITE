@@ -44,7 +44,7 @@ export default function Hero() {
 
       <motion.div 
         style={{ y, opacity }}
-        className="relative z-10 max-w-5xl mx-auto px-6 text-center"
+        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center w-full"
       >
         <motion.div
            initial={{ opacity: 0, scale: 0.9 }}
@@ -58,7 +58,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1 
-          className="text-[clamp(2.5rem,5vw,5rem)] font-serif font-extrabold leading-[1.05] tracking-tight mb-12"
+          className="text-[clamp(1.8rem,5vw,5rem)] font-serif font-extrabold leading-[1.05] tracking-tight mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
