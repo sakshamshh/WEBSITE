@@ -151,14 +151,14 @@ export default function Products() {
             const Icon = p.icon;
             const isExpanded = !!expandedProducts[p.id];
             return (
-              <div
-                key={p.title}
-                id={`card-${p.id}`}
-                onClick={() => toggleProduct(p.id)}
-                className={`reveal glass-card p-8 md:p-10 flex flex-col justify-between transition-colors duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(0,255,136,0.15)] group cursor-pointer ${
-                  isExpanded ? 'border-accent shadow-[0_0_30px_rgba(0,255,136,0.15)]' : ''
-                }`}
-              >
+              <div key={p.title} className="reveal h-full">
+                <div
+                  id={`card-${p.id}`}
+                  onClick={() => toggleProduct(p.id)}
+                  className={`glass-card p-8 md:p-10 h-full flex flex-col justify-between transition-colors duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(0,255,136,0.15)] group cursor-pointer ${
+                    isExpanded ? 'border-accent shadow-[0_0_30px_rgba(0,255,136,0.15)]' : ''
+                  }`}
+                >
                 <div>
                   {/* Card Header with Icon and Badge */}
                   <div className="flex items-center justify-between mb-8">
@@ -243,6 +243,7 @@ export default function Products() {
                 >
                   <span>Learn More</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </div>
                 </div>
               </div>
             );
