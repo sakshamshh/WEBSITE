@@ -57,7 +57,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://wa.me/918766385565"
+            href="https://wa.me/918178332368"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline !py-2.5 !px-6 !text-sm !rounded-lg"
@@ -95,7 +95,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://wa.me/918766385565"
+            href="https://wa.me/918178332368"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary !text-sm mt-2 w-fit"

@@ -108,7 +108,7 @@ export default function Hero() {
         {/* Buttons */}
         <div className="flex items-center justify-center mb-12">
           <a
-            href="https://wa.me/918766385565?text=Hi!%20I%27d%20like%20to%20request%20a%20demo%20of%20your%20AI%20intelligence%20products."
+            href="https://wa.me/918178332368"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"

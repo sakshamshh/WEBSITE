@@ -42,7 +42,7 @@ export default function Pricing() {
 
           {/* CTA */}
           <a
-            href="https://wa.me/918766385565?text=Hi!%20I%27d%20like%20to%20talk%20about%20pricing%20for%20Auris."
+            href="https://wa.me/918178332368"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary w-full justify-center"
