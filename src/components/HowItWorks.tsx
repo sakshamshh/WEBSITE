@@ -5,7 +5,7 @@ const steps = [
   {
     num: '01',
     title: 'Connect',
-    desc: 'We plug into your existing cameras. No new hardware, no rewiring.',
+    desc: 'We plug into your existing cameras. Minimal setup, no rewiring.',
     icon: Plug,
   },
   {

@@ -102,7 +102,7 @@ export default function Hero() {
 
         {/* Subtext */}
         <p className="text-text-muted text-base md:text-xl max-w-[600px] mx-auto mb-8 leading-relaxed">
-          Real-time intelligence from the cameras you already own. No new hardware. No guesswork. Just clarity.
+          Real-time intelligence from the cameras you already own. Minimal setup. No guesswork. Just clarity.
         </p>
 
         {/* Buttons */}
