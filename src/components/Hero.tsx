@@ -118,7 +118,7 @@ export default function Hero() {
         </div>
 
         {/* Factory map image */}
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative mx-auto">
           {/* LIVE badge — centered above image */}
           <div className="flex justify-center mb-4">
             <span className="live-badge">LIVE</span>

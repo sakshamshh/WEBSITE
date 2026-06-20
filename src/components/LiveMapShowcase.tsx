@@ -21,7 +21,7 @@ export default function LiveMapShowcase() {
                 <img
                   src="/images/factory-map.png"
                   alt="Auris 3D Live Map"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             </div>

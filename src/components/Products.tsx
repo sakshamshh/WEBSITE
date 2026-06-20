@@ -181,15 +181,16 @@ export default function Products() {
                     {p.desc}
                   </p>
 
-                  {/* Expandable Details Container using CSS Grid for height animation */}
+                  {/* Expandable Details Container */}
                   <div
-                    className={`grid transition-all duration-500 ease-in-out ${
+                    onClick={(e) => e.stopPropagation()}
+                    className={`transition-all duration-500 ease-in-out overflow-hidden ${
                       isExpanded
-                        ? 'grid-rows-[1fr] opacity-100 mt-6 pt-6 border-t border-card-border/40'
-                        : 'grid-rows-[0fr] opacity-0'
+                        ? 'max-h-[1000px] opacity-100 mt-6 pt-6 border-t border-card-border/40'
+                        : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="overflow-hidden">
+                    <div>
                       <div className="space-y-6">
                         <p className="text-text-muted text-sm md:text-base leading-relaxed">
                           {p.detailedDesc}

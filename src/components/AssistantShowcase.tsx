@@ -48,7 +48,7 @@ export default function AssistantShowcase() {
                 <img
                   src="/images/assistant.png"
                   alt="Auris AI Assistant"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             </div>
