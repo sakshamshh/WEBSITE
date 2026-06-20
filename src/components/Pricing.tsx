@@ -1,5 +1,4 @@
 import { Check, Phone } from 'lucide-react';
-import { useReveal } from '../lib/hooks';
 
 const included = [
   'All cameras connected',
@@ -9,11 +8,9 @@ const included = [
 ];
 
 export default function Pricing() {
-  const ref = useReveal();
-
   return (
-    <section id="pricing" className="py-16 md:py-20" ref={ref}>
-      <div className="reveal section-container flex justify-center">
+    <section id="pricing" className="py-16 md:py-20">
+      <div className="section-container flex justify-center">
         <div className="pricing-card w-full max-w-[480px] p-8 md:p-10 text-center">
           {/* Label */}
           <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-6">
