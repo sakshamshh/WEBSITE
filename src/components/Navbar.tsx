@@ -39,7 +39,6 @@ export default function Navbar() {
           className="flex items-center gap-3 group"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
-          <span className="green-dot" />
           <span className="text-white font-[800] text-xl tracking-tight">AURIS</span>
         </a>
 
