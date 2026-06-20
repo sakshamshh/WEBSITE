@@ -52,28 +52,10 @@ export default function Footer() {
                 +91 81783 32368
               </a>
               <a
-                href="tel:+919818167998"
-                className="text-text-muted text-xs hover:text-accent transition-colors block"
-              >
-                +91 98181 67998
-              </a>
-              <a
                 href="mailto:contactus@skymlabs.com"
                 className="text-text-muted text-xs hover:text-accent transition-colors block"
               >
                 contactus@skymlabs.com
-              </a>
-              <a
-                href="mailto:ayush@skymlabs.com"
-                className="text-text-muted text-xs hover:text-accent transition-colors block"
-              >
-                ayush@skymlabs.com
-              </a>
-              <a
-                href="mailto:saksham@skymlabs.com"
-                className="text-text-muted text-xs hover:text-accent transition-colors block"
-              >
-                saksham@skymlabs.com
               </a>
             </div>
           </div>
