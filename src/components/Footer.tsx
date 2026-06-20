@@ -20,7 +20,6 @@ export default function Footer() {
               SKYM LABS<span className="text-accent">.</span>
             </span>
             <p className="text-text-muted text-xs mt-2">AI intelligence for the physical world.</p>
-            <p className="text-text-muted text-xs mt-1 opacity-60">Auris is a product of Skym Labs Pvt Ltd.</p>
           </div>
 
           {/* Links */}
