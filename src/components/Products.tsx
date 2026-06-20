@@ -125,16 +125,7 @@ export default function Products() {
   const containerRef = useRevealMany();
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (activeProduct) {
-      const el = document.getElementById(`card-${activeProduct}`);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 150);
-      }
-    }
-  }, [activeProduct]);
+
 
   return (
     <section id="products" className="py-16 md:py-24" ref={containerRef}>
@@ -159,7 +150,7 @@ export default function Products() {
                 key={p.title}
                 id={`card-${p.id}`}
                 onClick={() => setActiveProduct(isExpanded ? null : p.id)}
-                className={`reveal glass-card p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:border-accent hover:shadow-[0_0_30px_rgba(0,255,136,0.15)] group cursor-pointer ${
+                className={`reveal glass-card p-8 md:p-10 flex flex-col justify-between transition-colors duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(0,255,136,0.15)] group cursor-pointer ${
                   isExpanded ? 'border-accent shadow-[0_0_30px_rgba(0,255,136,0.15)]' : ''
                 }`}
               >
