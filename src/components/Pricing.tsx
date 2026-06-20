@@ -11,7 +11,7 @@ export default function Pricing() {
   const ref = useReveal();
 
   return (
-    <section id="pricing" className="py-24 md:py-32" ref={ref}>
+    <section id="pricing" className="py-16 md:py-20" ref={ref}>
       <div className="reveal section-container flex justify-center">
         <div className="pricing-card w-full max-w-[480px] p-8 md:p-10 text-center">
           {/* Label */}
@@ -48,7 +48,7 @@ export default function Pricing() {
 
           {/* CTA */}
           <a
-            href="https://wa.me/918766385565"
+            href="https://wa.me/918178332368"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary w-full justify-center"

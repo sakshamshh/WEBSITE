@@ -20,7 +20,6 @@ export default function Hero() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Create particles
     for (let i = 0; i < 60; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -48,7 +47,6 @@ export default function Hero() {
         ctx!.fill();
       });
 
-      // Draw subtle connecting lines between close particles
       ctx!.strokeStyle = 'rgba(0, 255, 136, 0.03)';
       ctx!.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
@@ -76,7 +74,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Particle background */}
       <canvas ref={canvasRef} className="particles-container" />
 
@@ -91,26 +89,26 @@ export default function Hero() {
 
       <div className="section-container relative z-10 text-center">
         {/* Eyebrow */}
-        <p className="text-accent text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-6 md:mb-8">
+        <p className="text-accent text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-5">
           Factory Intelligence, Reimagined
         </p>
 
         {/* Headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[800] leading-[0.95] mb-6 md:mb-8">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[800] leading-[0.95] mb-5">
           Your Factory.
           <br />
           <span className="gradient-text">Total Control.</span>
         </h1>
 
         {/* Subtext */}
-        <p className="text-text-muted text-base md:text-xl max-w-[600px] mx-auto mb-10 md:mb-12 leading-relaxed">
+        <p className="text-text-muted text-base md:text-xl max-w-[600px] mx-auto mb-8 leading-relaxed">
           Real-time intelligence from the cameras you already own. No new hardware. No guesswork. Just clarity.
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 md:mb-20">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <a
-            href="https://wa.me/918766385565"
+            href="https://wa.me/918178332368"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
@@ -129,8 +127,8 @@ export default function Hero() {
 
         {/* Factory map image */}
         <div className="relative max-w-4xl mx-auto">
-          {/* LIVE badge */}
-          <div className="absolute -top-3 left-4 md:left-8 z-20">
+          {/* LIVE badge — centered above image */}
+          <div className="flex justify-center mb-4">
             <span className="live-badge">LIVE</span>
           </div>
 
@@ -150,7 +148,7 @@ export default function Hero() {
 
           {/* Glow underneath */}
           <div
-            className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-16 rounded-full pointer-events-none"
+            className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-12 rounded-full pointer-events-none"
             style={{
               background:
                 'radial-gradient(ellipse at center, rgba(0,212,255,0.3) 0%, rgba(0,255,136,0.15) 40%, transparent 70%)',

@@ -23,7 +23,7 @@ export default function Problem() {
   const containerRef = useRevealMany();
 
   return (
-    <section className="py-24 md:py-32" ref={containerRef}>
+    <section className="py-16 md:py-20" ref={containerRef}>
       <div className="section-container text-center">
         <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] mb-5">
           Most factories operate blind.

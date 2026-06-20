@@ -11,7 +11,7 @@ export default function AssistantShowcase() {
   const containerRef = useRevealMany();
 
   return (
-    <section id="product" className="py-24 md:py-32" ref={containerRef}>
+    <section id="product" className="py-16 md:py-20" ref={containerRef}>
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text side */}

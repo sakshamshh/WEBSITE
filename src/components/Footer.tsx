@@ -5,15 +5,20 @@ const footerLinks = [
   { label: 'Live Dashboard', href: 'https://auris.skymlabs.com', external: true },
 ];
 
+const team = [
+  { name: 'Ayush Ranjan', email: 'ayush@skymlabs.com' },
+  { name: 'Saksham Sharma', email: 'saksham@skymlabs.com' },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-card-border py-16 md:py-24">
+    <footer className="border-t border-card-border py-12 md:py-16">
       <div className="section-container">
         {/* Top */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-3">
               <span className="green-dot" />
               <span className="text-white font-[800] text-2xl tracking-tight opacity-30">AURIS</span>
             </div>
@@ -23,7 +28,7 @@ export default function Footer() {
           {/* Links */}
           <div>
             <h4 className="text-white text-sm font-semibold mb-4 tracking-normal">Links</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {footerLinks.map((l) => (
                 <li key={l.label}>
                   <a
@@ -41,17 +46,32 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="text-white text-sm font-semibold mb-4 tracking-normal">Contact</h4>
-            <a
-              href="mailto:saksham@skymlabs.com"
-              className="text-text-muted text-sm hover:text-accent transition-colors"
-            >
-              saksham@skymlabs.com
-            </a>
+            <div className="space-y-3">
+              {team.map((t) => (
+                <div key={t.email}>
+                  <p className="text-white text-sm font-medium">{t.name}</p>
+                  <a
+                    href={`mailto:${t.email}`}
+                    className="text-text-muted text-sm hover:text-accent transition-colors"
+                  >
+                    {t.email}
+                  </a>
+                </div>
+              ))}
+              <div className="pt-1">
+                <a
+                  href="tel:+918178332368"
+                  className="text-text-muted text-sm hover:text-accent transition-colors"
+                >
+                  +91 81783 32368
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-card-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-card-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-text-muted text-xs">© 2026 Skym Labs Pvt Ltd</p>
           <p className="text-text-muted text-xs">Built in India 🇮🇳</p>
         </div>
