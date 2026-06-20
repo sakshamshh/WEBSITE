@@ -1,130 +1,95 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
-
-const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Products', href: '#products' },
-  { name: 'Why Us', href: '#why-us' },
-  { name: 'Industries', href: '#industries' },
-
-];
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handler = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handler, { passive: true });
+    handler();
+    return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-    setMobileMenuOpen(false);
-  };
+  const links = [
+    { label: 'Product', href: '#product' },
+    { label: 'How it Works', href: '#how-it-works' },
+    { label: 'Pricing', href: '#pricing' },
+  ];
 
   return (
-    <>
-      <nav
-        className={cn(
-          'fixed inset-x-0 top-0 z-50 transition-all duration-500 py-6',
-          isScrolled
-            ? 'bg-bg/90 backdrop-blur-xl border-b border-black/5 py-4'
-            : 'bg-transparent'
-        )}
-      >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'navbar-scrolled' : ''
+      }`}
+    >
+      <div className="section-container flex items-center justify-between h-16 md:h-20">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-3 group">
+          <span className="green-dot" />
+          <span className="text-white font-[800] text-xl tracking-tight">AURIS</span>
+        </a>
+
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              className="text-text-muted hover:text-white text-sm font-medium transition-colors duration-300"
+            >
+              {l.label}
+            </a>
+          ))}
           <a
-            href="#"
-            className="group flex flex-col items-start gap-0.5"
-            onClick={(e) => scrollToSection(e, '#')}
+            href="https://wa.me/918766385565"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline !py-2.5 !px-6 !text-sm !rounded-lg"
           >
-            <span className="text-xl font-serif font-bold text-text-primary tracking-[0.25em] uppercase transition-all group-hover:text-accent">
-              Skymlabs
-            </span>
-            <div className="w-full h-[1px] bg-accent/30 origin-left scale-x-50 group-hover:scale-x-100 transition-transform duration-500" />
+            Request Demo
           </a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-12">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-[10px] uppercase tracking-[0.3em] font-bold text-text-muted hover:text-accent transition-all duration-300 relative group/link"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all duration-300 group-hover/link:w-full" />
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, '#contact')}
-              className="px-8 py-2.5 bg-text-primary text-bg hover:bg-accent border border-transparent text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 rounded-sm"
-            >
-              Contact
-            </a>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-text-primary p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
-      </nav>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-bg md:hidden flex flex-col items-center justify-center gap-8"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-4xl font-serif font-medium text-text-primary hover:text-accent"
-              >
-                {link.name}
-              </a>
-            ))}
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden text-white p-2"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ${
+          mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+        style={{ background: 'rgba(10, 15, 30, 0.95)', backdropFilter: 'blur(16px)' }}
+      >
+        <div className="section-container py-6 flex flex-col gap-4">
+          {links.map((l) => (
             <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, '#contact')}
-              className="mt-4 px-10 py-4 rounded-full bg-accent text-bg font-bold text-lg"
+              key={l.label}
+              href={l.href}
+              className="text-text-muted hover:text-white text-base font-medium transition-colors"
+              onClick={() => setMobileOpen(false)}
             >
-              Get in touch
+              {l.label}
             </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          ))}
+          <a
+            href="https://wa.me/918766385565"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary !text-sm mt-2 w-fit"
+          >
+            Request Demo
+          </a>
+        </div>
+      </div>
+    </nav>
   );
 }

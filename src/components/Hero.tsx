@@ -1,122 +1,164 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { ArrowDown } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
+    let animId: number;
+    const particles: { x: number; y: number; vx: number; vy: number; r: number }[] = [];
 
-  const scrollToProducts = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.querySelector('#products')?.scrollIntoView({ behavior: 'smooth' });
-  };
+    function resize() {
+      canvas!.width = window.innerWidth;
+      canvas!.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Create particles
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.5 + 0.5,
+      });
+    }
+
+    function draw() {
+      ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
+      ctx!.fillStyle = 'rgba(0, 255, 136, 0.06)';
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas!.width;
+        if (p.x > canvas!.width) p.x = 0;
+        if (p.y < 0) p.y = canvas!.height;
+        if (p.y > canvas!.height) p.y = 0;
+
+        ctx!.beginPath();
+        ctx!.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx!.fill();
+      });
+
+      // Draw subtle connecting lines between close particles
+      ctx!.strokeStyle = 'rgba(0, 255, 136, 0.03)';
+      ctx!.lineWidth = 0.5;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx!.beginPath();
+            ctx!.moveTo(particles[i].x, particles[i].y);
+            ctx!.lineTo(particles[j].x, particles[j].y);
+            ctx!.stroke();
+          }
+        }
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-bg"
-    >
-      {/* Cinematic Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(166,139,91,0.1),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(166,139,91,0.05),transparent_70%)]" />
-        
-        {/* Grain Texture */}
-        <div className="absolute inset-0 opacity-[0.2] pointer-events-none mix-blend-multiply" 
-             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Particle background */}
+      <canvas ref={canvasRef} className="particles-container" />
 
-        <div 
-          className="absolute inset-0 opacity-[0.05]" 
-          style={{ backgroundImage: 'linear-gradient(rgba(166,139,91,1) 1px, transparent 1px), linear-gradient(90deg, rgba(166,139,91,1) 1px, transparent 1px)', backgroundSize: '120px 120px' }}
-        />
+      {/* Radial gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(0,255,136,0.06) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="section-container relative z-10 text-center">
+        {/* Eyebrow */}
+        <p className="text-accent text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-6 md:mb-8">
+          Factory Intelligence, Reimagined
+        </p>
+
+        {/* Headline */}
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[800] leading-[0.95] mb-6 md:mb-8">
+          Your Factory.
+          <br />
+          <span className="gradient-text">Total Control.</span>
+        </h1>
+
+        {/* Subtext */}
+        <p className="text-text-muted text-base md:text-xl max-w-[600px] mx-auto mb-10 md:mb-12 leading-relaxed">
+          Real-time intelligence from the cameras you already own. No new hardware. No guesswork. Just clarity.
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 md:mb-20">
+          <a
+            href="https://wa.me/918766385565"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Request Demo <ArrowRight size={16} />
+          </a>
+          <a
+            href="https://auris.skymlabs.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
+            See it Live <ExternalLink size={14} />
+          </a>
+        </div>
+
+        {/* Factory map image */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* LIVE badge */}
+          <div className="absolute -top-3 left-4 md:left-8 z-20">
+            <span className="live-badge">LIVE</span>
+          </div>
+
+          {/* Image with 3D tilt and glow */}
+          <div className="float-anim">
+            <div
+              className="image-frame glow-green"
+              style={{ transform: 'perspective(1000px) rotateX(8deg)' }}
+            >
+              <img
+                src="/images/factory-map.png"
+                alt="Auris 3D Live Factory Map"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          {/* Glow underneath */}
+          <div
+            className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-16 rounded-full pointer-events-none"
+            style={{
+              background:
+                'radial-gradient(ellipse at center, rgba(0,212,255,0.3) 0%, rgba(0,255,136,0.15) 40%, transparent 70%)',
+              filter: 'blur(20px)',
+            }}
+          />
+        </div>
       </div>
-
-      <motion.div 
-        style={{ y, opacity }}
-        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center w-full"
-      >
-        <motion.div
-           initial={{ opacity: 0, scale: 0.9 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-           className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-10 overflow-hidden relative group"
-        >
-          <div className="absolute inset-0 bg-accent/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
-          <div className="w-1 h-1 bg-accent rounded-full shadow-[0_0_8px_rgba(166,139,91,0.5)]" />
-          <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-accent">Systems Architecture</span>
-        </motion.div>
-
-        <motion.h1 
-          className="text-[clamp(1.8rem,5vw,5rem)] font-serif font-extrabold leading-[1.05] tracking-tight mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          ENGINEERING THE <br />
-          <span className="text-accent italic font-light tracking-[0.1em] opacity-90">INTELLIGENT EDGE</span>
-        </motion.h1>
-
-        <motion.p 
-          className="text-base md:text-lg text-text-muted max-w-lg mx-auto mb-14 font-sans font-normal leading-relaxed tracking-wide"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Skymlabs builds high-performance software for complex physical domains. 
-          Bridging the gap between raw data and actionable intelligence.
-        </motion.p>
-
-        <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <a
-            href="#products"
-            onClick={scrollToProducts}
-            className="group relative px-10 py-4 bg-text-primary text-bg text-[11px] font-bold uppercase tracking-[0.3em] overflow-hidden transition-all duration-500 rounded-sm"
-          >
-            <span className="relative z-10">Discover Products</span>
-            <div className="absolute inset-0 bg-accent translate-x-[-100%] group-hover:translate-x-[0%] transition-transform duration-500" />
-          </a>
-          <a
-            href="#contact"
-            onClick={scrollToContact}
-            className="px-10 py-4 border border-text-primary/10 text-text-primary text-[11px] font-bold uppercase tracking-[0.3em] hover:border-accent hover:text-accent transition-all duration-500 rounded-sm group overflow-hidden relative"
-          >
-            <span className="relative z-10">Start Dialogue</span>
-            <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-          </a>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-text-muted/40"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-      >
-        <span className="text-[10px] uppercase tracking-[0.4em] font-medium">Scroll to explore</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ArrowDown size={20} className="text-accent/50" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

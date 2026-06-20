@@ -1,34 +1,30 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import SmoothScroll from './components/SmoothScroll';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Products from './components/Products';
-import WhyUs from './components/WhyUs';
-import Industries from './components/Industries';
-import Contact from './components/Contact';
+import Problem from './components/Problem';
+import AssistantShowcase from './components/AssistantShowcase';
+import LiveMapShowcase from './components/LiveMapShowcase';
+import HowItWorks from './components/HowItWorks';
+import CompatibleCameras from './components/CompatibleCameras';
+import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen selection:bg-accent selection:text-bg">
+      <div className="relative min-h-screen bg-bg text-text-primary">
         <Navbar />
         <main>
           <Hero />
-          <About />
-          <Products />
-          <WhyUs />
-          <Industries />
-          <Contact />
+          <Problem />
+          <AssistantShowcase />
+          <LiveMapShowcase />
+          <HowItWorks />
+          <CompatibleCameras />
+          <Pricing />
         </main>
         <Footer />
       </div>
     </SmoothScroll>
   );
 }
-
