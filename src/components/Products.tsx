@@ -10,10 +10,27 @@ const products = [
     desc: 'Real-time worker intelligence for manufacturing floors.',
     detailedDesc: 'Provides real-time worker intelligence and bottleneck detection for manufacturing floors. Tracks cycle times, idle periods, and layout flows using existing cameras to optimize floor throughput.',
     features: [
-      'Real-time cycle time & bottleneck alerts',
-      'Zone-level worker occupancy tracking',
-      'Automated shift activity reporting',
+      {
+        title: 'Live worker count per zone',
+        desc: 'know exactly how many people are on the floor right now, updated every few seconds',
+      },
+      {
+        title: 'Shift intelligence',
+        desc: 'automatic shift start/end detection, peak hours, lunch dip, all without manual input',
+      },
+      {
+        title: 'Bottleneck detection',
+        desc: 'identifies which workstation is consistently overloaded and costing you money',
+      },
+      {
+        title: 'Idle time tracking',
+        desc: 'measures dead time per zone across the full shift with cost estimates in ₹',
+      },
     ],
+    chatbotFeature: {
+      title: 'Auris AI Chatbot',
+      desc: 'ask "How was today\'s shift?" or "Which zone was most idle this week?" and get instant answers in plain English',
+    },
   },
   {
     id: 'retail',
@@ -22,10 +39,27 @@ const products = [
     desc: 'Customer flow, dwell time, and zone analytics for retail stores.',
     detailedDesc: 'Delivers deep customer analytics and zone heatmaps for physical retail environments. Understand customer journeys, measure display effectiveness, and track dwell times in real time.',
     features: [
-      'Customer flow & path tracking',
-      'Zone heatmaps & layout optimization',
-      'Real-time queue & checkout alerts',
+      {
+        title: 'Customer flow mapping',
+        desc: 'see how customers move through your store in real time',
+      },
+      {
+        title: 'Zone dwell time',
+        desc: 'know which sections customers spend the most time in',
+      },
+      {
+        title: 'Peak hour detection',
+        desc: 'automatically identifies rush hours and slow periods',
+      },
+      {
+        title: 'Queue and checkout monitoring',
+        desc: 'alerts when queues build up at billing counters',
+      },
     ],
+    chatbotFeature: {
+      title: 'Auris AI Chatbot',
+      desc: 'ask "How many customers visited today?" or "Which zone had the most footfall?" instantly',
+    },
   },
   {
     id: 'warehouse',
@@ -34,10 +68,27 @@ const products = [
     desc: 'Worker tracking and inventory zone monitoring for warehouses.',
     detailedDesc: 'Optimizes logistics operations by tracking picker efficiency and inventory zone occupancy. Improve worker safety, streamline loading dock cycles, and monitor high-traffic lanes automatically.',
     features: [
-      'Picker flow & travel path analytics',
-      'Forklift & machinery safety zones',
-      'Loading dock turnaround tracking',
+      {
+        title: 'Picker path analytics',
+        desc: 'track worker movement to find inefficiencies in pick routes',
+      },
+      {
+        title: 'Loading dock monitoring',
+        desc: 'measure truck turnaround times and dock utilization',
+      },
+      {
+        title: 'Safety zone alerts',
+        desc: 'detect when workers enter restricted machinery or forklift zones',
+      },
+      {
+        title: 'Shift productivity tracking',
+        desc: 'compare worker activity across shifts automatically',
+      },
     ],
+    chatbotFeature: {
+      title: 'Auris AI Chatbot',
+      desc: 'ask "How many dock movements happened today?" or "Which shift was most productive?" in seconds',
+    },
   },
   {
     id: 'hospital',
@@ -46,10 +97,27 @@ const products = [
     desc: 'Staff presence and patient zone monitoring for healthcare facilities.',
     detailedDesc: 'Enhances healthcare operations through real-time staff presence and patient flow monitoring. Ensure timely nurse rounds, monitor patient zone times, and improve overall emergency room throughput.',
     features: [
-      'Staff presence & round tracking',
-      'Patient wait time & flow analytics',
-      'Critical zone occupancy alerts',
+      {
+        title: 'Staff presence tracking',
+        desc: 'verify nurse rounds are happening on schedule across wards',
+      },
+      {
+        title: 'Patient zone monitoring',
+        desc: 'track patient flow through OPD, waiting areas, and wards',
+      },
+      {
+        title: 'Critical zone occupancy',
+        desc: 'instant alerts when restricted areas have unauthorized presence',
+      },
+      {
+        title: 'Shift handover intelligence',
+        desc: 'automatic summary of staff activity during each shift',
+      },
     ],
+    chatbotFeature: {
+      title: 'Auris AI Chatbot',
+      desc: 'ask "Were all nurse rounds completed today?" or "How busy was OPD this afternoon?" instantly',
+    },
   },
 ];
 
@@ -127,16 +195,32 @@ export default function Products() {
                           {p.detailedDesc}
                         </p>
 
-                        <ul className="space-y-3">
+                        {/* Standard Features */}
+                        <ul className="space-y-4">
                           {p.features.map((f, idx) => (
                             <li key={idx} className="flex items-start gap-3 text-sm text-text-muted">
-                              <div className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5 border border-accent/20">
                                 <Check size={12} className="text-accent" />
                               </div>
-                              <span className="leading-relaxed">{f}</span>
+                              <span className="leading-relaxed">
+                                <strong className="text-white font-semibold">{f.title}</strong> — {f.desc}
+                              </span>
                             </li>
                           ))}
                         </ul>
+
+                        {/* Highlighted Chatbot Feature */}
+                        <div className="p-4 rounded-xl bg-accent/[0.03] border border-accent/20 shadow-[0_0_15px_rgba(0,255,136,0.05)] relative overflow-hidden group/chatbot">
+                          <div className="absolute inset-0 bg-gradient-to-r from-accent/[0.02] to-transparent pointer-events-none" />
+                          <div className="flex items-start gap-3 relative z-10">
+                            <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5 border border-accent/30 shadow-[0_0_8px_rgba(0,255,136,0.2)]">
+                              <Check size={12} className="text-accent" />
+                            </div>
+                            <span className="text-sm text-text-muted leading-relaxed">
+                              <strong className="text-accent font-bold">{p.chatbotFeature.title}</strong> — {p.chatbotFeature.desc}
+                            </span>
+                          </div>
+                        </div>
 
                         <div className="pt-2">
                           <a
@@ -154,7 +238,7 @@ export default function Products() {
                   </div>
                 </div>
 
-                {/* Arrow indicator at the bottom (collapses/expands action link style) */}
+                {/* Arrow indicator at the bottom */}
                 <div
                   className={`mt-6 pt-4 border-t border-card-border/20 flex items-center justify-between text-sm font-semibold text-accent hover:text-white transition-colors duration-300 ${
                     isExpanded ? 'hidden' : ''
