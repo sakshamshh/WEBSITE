@@ -21,7 +21,7 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { label: 'Product', href: '#product' },
+    { label: 'Product', href: '#products' },
     { label: 'How it Works', href: '#how-it-works' },
     { label: 'Pricing', href: '#pricing' },
   ];

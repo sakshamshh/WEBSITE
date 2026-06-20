@@ -1,13 +1,9 @@
 const footerLinks = [
-  { label: 'Product', href: '#product' },
+  { label: 'Product', href: '#products' },
   { label: 'How it Works', href: '#how-it-works' },
   { label: 'Pricing', href: '#pricing' },
 ];
 
-const team = [
-  { name: 'Ayush Ranjan', email: 'ayush@skymlabs.com' },
-  { name: 'Saksham Sharma', email: 'saksham@skymlabs.com' },
-];
 
 export default function Footer() {
   return (
@@ -39,26 +35,45 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Founders & Contact */}
           <div>
+            <h4 className="text-white text-xs font-semibold mb-3 tracking-normal uppercase opacity-50">Founders</h4>
+            <div className="space-y-1 mb-6">
+              <p className="text-white text-sm font-medium">Saksham Sharma</p>
+              <p className="text-white text-sm font-medium">Ayush Ranjan</p>
+            </div>
+
             <h4 className="text-white text-xs font-semibold mb-3 tracking-normal uppercase opacity-50">Contact</h4>
             <div className="space-y-2">
-              {team.map((t) => (
-                <div key={t.email}>
-                  <p className="text-white text-sm font-medium">{t.name}</p>
-                  <a
-                    href={`mailto:${t.email}`}
-                    className="text-text-muted text-xs hover:text-accent transition-colors"
-                  >
-                    {t.email}
-                  </a>
-                </div>
-              ))}
               <a
                 href="tel:+918178332368"
                 className="text-text-muted text-xs hover:text-accent transition-colors block"
               >
                 +91 81783 32368
+              </a>
+              <a
+                href="tel:+919818167998"
+                className="text-text-muted text-xs hover:text-accent transition-colors block"
+              >
+                +91 98181 67998
+              </a>
+              <a
+                href="mailto:contactus@skymlabs.com"
+                className="text-text-muted text-xs hover:text-accent transition-colors block"
+              >
+                contactus@skymlabs.com
+              </a>
+              <a
+                href="mailto:ayush@skymlabs.com"
+                className="text-text-muted text-xs hover:text-accent transition-colors block"
+              >
+                ayush@skymlabs.com
+              </a>
+              <a
+                href="mailto:saksham@skymlabs.com"
+                className="text-text-muted text-xs hover:text-accent transition-colors block"
+              >
+                saksham@skymlabs.com
               </a>
             </div>
           </div>

@@ -26,7 +26,7 @@ export default function HowItWorks() {
   const containerRef = useRevealMany();
 
   return (
-    <section id="how-it-works" className="py-16 md:py-20" ref={containerRef}>
+    <section className="py-16 md:py-20" ref={containerRef}>
       <div className="section-container">
         <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] text-center mb-20">
           Live in 30 minutes.
