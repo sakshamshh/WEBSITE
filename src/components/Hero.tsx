@@ -106,7 +106,7 @@ export default function Hero() {
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <div className="flex items-center justify-center mb-12">
           <a
             href="https://wa.me/918178332368"
             target="_blank"
@@ -114,14 +114,6 @@ export default function Hero() {
             className="btn-primary"
           >
             Request Demo <ArrowRight size={16} />
-          </a>
-          <a
-            href="https://auris.skymlabs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-          >
-            See it Live <ExternalLink size={14} />
           </a>
         </div>
 

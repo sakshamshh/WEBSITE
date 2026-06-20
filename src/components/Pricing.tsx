@@ -4,7 +4,6 @@ const included = [
   'All cameras connected',
   'Live 3D map + AI assistant',
   'Shift & bottleneck intelligence',
-  'First month free — always',
 ];
 
 export default function Pricing() {
