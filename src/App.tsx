@@ -1,6 +1,7 @@
 import SmoothScroll from './components/SmoothScroll';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Products from './components/Products';
 import Problem from './components/Problem';
 import AssistantShowcase from './components/AssistantShowcase';
 import LiveMapShowcase from './components/LiveMapShowcase';
@@ -19,6 +20,7 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
+          <Products />
           <Problem />
           <AssistantShowcase />
           <LiveMapShowcase />

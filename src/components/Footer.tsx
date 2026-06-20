@@ -16,9 +16,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Brand */}
           <div>
-            <span className="text-white font-[800] text-xl tracking-tight opacity-40">AURIS</span>
-            <p className="text-text-muted text-xs mt-2">Total factory intelligence.</p>
-            <p className="text-text-muted text-xs mt-1 opacity-60">A Skymlabs Pvt Ltd product.</p>
+            <span className="text-white font-[800] text-xl tracking-tight opacity-40">
+              SKYM LABS<span className="text-accent">.</span>
+            </span>
+            <p className="text-text-muted text-xs mt-2">AI intelligence for the physical world.</p>
+            <p className="text-text-muted text-xs mt-1 opacity-60">Auris is a product of Skym Labs Pvt Ltd.</p>
           </div>
 
           {/* Links */}

@@ -11,7 +11,7 @@ const steps = [
   {
     num: '02',
     title: 'Learn',
-    desc: 'Auris studies your factory for 15 days, learning your unique floor.',
+    desc: 'Auris studies your space for 15 days, learning your unique floor.',
     icon: Brain,
   },
   {

@@ -2,7 +2,7 @@ import { Check } from 'lucide-react';
 import { useRevealMany } from '../lib/hooks';
 
 const features = [
-  'Live factory context, always current',
+  'Live floor context, always current',
   'Remembers every conversation',
   'Instant answers, no dashboards to dig through',
 ];
@@ -25,7 +25,7 @@ export default function AssistantShowcase() {
               Know everything.
             </h2>
             <p className="reveal text-text-muted text-base md:text-lg mb-8 max-w-lg leading-relaxed">
-              A factory-aware AI trained on your floor. It knows your shift timings, peak hours,
+              A space-aware AI trained on your floor. It knows your shift timings, peak hours,
               and worker activity. Ask in plain English, get answers in seconds.
             </p>
 

@@ -42,12 +42,12 @@ export default function LiveMapShowcase() {
               Live 3D Map
             </p>
             <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] mb-6">
-              See your factory
+              See your space
               <br />
               like never before.
             </h2>
             <p className="reveal text-text-muted text-base md:text-lg mb-8 max-w-lg leading-relaxed">
-              A real-time 3D model of your floor. Watch workers move. See every camera's field of
+              A real-time 3D model of your floor. Watch zone activity. See every camera's field of
               view. Spot bottlenecks the moment they form.
             </p>
 

@@ -22,7 +22,7 @@ export default function Pricing() {
           </h2>
 
           <p className="text-text-muted text-sm mb-8 max-w-xs mx-auto leading-relaxed">
-            Every factory is different. We price based on camera count and floor size — no hidden fees, no contracts.
+            Every physical space is different. We price based on camera count and layout size — no hidden fees, no contracts.
           </p>
 
           {/* Divider */}
@@ -42,7 +42,7 @@ export default function Pricing() {
 
           {/* CTA */}
           <a
-            href="https://wa.me/918178332368"
+            href="https://wa.me/918766385565?text=Hi!%20I%27d%20like%20to%20talk%20about%20pricing%20for%20Auris."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary w-full justify-center"

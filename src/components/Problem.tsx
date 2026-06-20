@@ -4,18 +4,18 @@ import { useRevealMany } from '../lib/hooks';
 const problems = [
   {
     icon: EyeOff,
-    title: 'Manual Headcounts',
-    desc: 'Registers and guesswork instead of real numbers.',
+    title: 'No Real-Time Visibility',
+    desc: 'Relying on guesswork and manual audits instead of live data.',
   },
   {
     icon: Clock,
     title: 'Invisible Idle Time',
-    desc: "Bottlenecks and downtime nobody notices until it's too late.",
+    desc: 'Bottlenecks, delays, and inefficiencies that go unnoticed day after day.',
   },
   {
     icon: LayoutGrid,
-    title: 'Zero Floor Visibility',
-    desc: "No live view of who's working where, right now.",
+    title: 'Zero Floor Intelligence',
+    desc: 'No real-time insights into worker movements, zone utilization, or flow dynamics.',
   },
 ];
 
@@ -26,10 +26,10 @@ export default function Problem() {
     <section className="py-16 md:py-20" ref={containerRef}>
       <div className="section-container text-center">
         <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] mb-5">
-          Most factories operate blind.
+          Most physical spaces operate blind.
         </h2>
         <p className="reveal text-text-muted text-base md:text-lg max-w-xl mx-auto mb-16">
-          You can't improve what you can't see. Today, the factory floor is a black box.
+          You can't improve what you can't see. Today, the operational floor is a black box.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

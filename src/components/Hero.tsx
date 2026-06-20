@@ -90,25 +90,25 @@ export default function Hero() {
       <div className="section-container relative z-10 text-center">
         {/* Eyebrow */}
         <p className="text-accent text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-5">
-          Factory Intelligence, Reimagined
+          AI INTELLIGENCE FOR PHYSICAL SPACES
         </p>
 
         {/* Headline */}
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[800] leading-[0.95] mb-5">
-          Your Factory.
+          Where AI Meets
           <br />
-          <span className="gradient-text">Total Control.</span>
+          <span className="gradient-text">the Real World.</span>
         </h1>
 
         {/* Subtext */}
-        <p className="text-text-muted text-base md:text-xl max-w-[600px] mx-auto mb-8 leading-relaxed">
-          Real-time intelligence from the cameras you already own. Minimal setup. No guesswork. Just clarity.
+        <p className="text-text-muted text-base md:text-xl max-w-[700px] mx-auto mb-8 leading-relaxed">
+          Skym Labs builds real-time intelligence systems for factories, warehouses, retail stores, and hospitals — using the cameras already on your walls.
         </p>
 
         {/* Buttons */}
         <div className="flex items-center justify-center mb-12">
           <a
-            href="https://wa.me/918178332368"
+            href="https://wa.me/918766385565?text=Hi!%20I%27d%20like%20to%20request%20a%20demo%20of%20your%20AI%20intelligence%20products."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"

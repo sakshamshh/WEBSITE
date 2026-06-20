@@ -39,7 +39,9 @@ export default function Navbar() {
           className="flex items-center gap-3 group"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
-          <span className="text-white font-[800] text-xl tracking-tight">AURIS</span>
+          <span className="text-white font-[800] text-xl tracking-tight">
+            SKYM LABS<span className="text-accent">.</span>
+          </span>
         </a>
 
         {/* Desktop links */}
@@ -55,7 +57,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://wa.me/918178332368"
+            href="https://wa.me/918766385565"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline !py-2.5 !px-6 !text-sm !rounded-lg"
@@ -93,7 +95,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://wa.me/918178332368"
+            href="https://wa.me/918766385565"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary !text-sm mt-2 w-fit"
