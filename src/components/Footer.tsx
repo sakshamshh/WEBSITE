@@ -2,7 +2,7 @@ const footerLinks = [
   { label: 'Product', href: '#product' },
   { label: 'How it Works', href: '#how-it-works' },
   { label: 'Pricing', href: '#pricing' },
-  { label: 'Live Dashboard', href: 'https://auris.skymlabs.com', external: true },
+
 ];
 
 const team = [
