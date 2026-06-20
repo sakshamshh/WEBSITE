@@ -1,10 +1,11 @@
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, Phone } from 'lucide-react';
 import { useReveal } from '../lib/hooks';
 
 const included = [
   'All cameras connected',
   'Live 3D map + AI assistant',
   'Shift & bottleneck intelligence',
+  'First month free — always',
 ];
 
 export default function Pricing() {
@@ -16,19 +17,16 @@ export default function Pricing() {
         <div className="pricing-card w-full max-w-[480px] p-8 md:p-10 text-center">
           {/* Label */}
           <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-6">
-            Simple Pricing
+            Pricing
           </p>
 
           {/* Headline */}
-          <h2 className="text-2xl md:text-3xl font-[800] mb-4">First month free.</h2>
+          <h2 className="text-2xl md:text-3xl font-[800] mb-3">
+            Custom to your floor.
+          </h2>
 
-          {/* Price */}
-          <div className="mb-2">
-            <span className="text-4xl md:text-5xl font-[800] gradient-text">₹6,000</span>
-            <span className="text-text-muted text-base ml-1">/month</span>
-          </div>
-          <p className="text-text-muted text-sm mb-8">
-            No contracts. No setup fees. Cancel anytime.
+          <p className="text-text-muted text-sm mb-8 max-w-xs mx-auto leading-relaxed">
+            Every factory is different. We price based on camera count and floor size — no hidden fees, no contracts.
           </p>
 
           {/* Divider */}
@@ -53,7 +51,7 @@ export default function Pricing() {
             rel="noopener noreferrer"
             className="btn-primary w-full justify-center"
           >
-            Request Demo <ArrowRight size={16} />
+            <Phone size={16} /> Talk to Us
           </a>
         </div>
       </div>
