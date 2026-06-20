@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Factory, ShoppingBag, Warehouse, Hospital, ArrowRight, Check } from 'lucide-react';
 import { useRevealMany } from '../lib/hooks';
 
@@ -123,9 +123,14 @@ const products = [
 
 export default function Products() {
   const containerRef = useRevealMany();
-  const [activeProduct, setActiveProduct] = useState<string | null>(null);
+  const [expandedProducts, setExpandedProducts] = useState<Record<string, boolean>>({});
 
-
+  const toggleProduct = (id: string) => {
+    setExpandedProducts((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   return (
     <section id="products" className="py-16 md:py-24" ref={containerRef}>
@@ -144,12 +149,12 @@ export default function Products() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {products.map((p) => {
             const Icon = p.icon;
-            const isExpanded = activeProduct === p.id;
+            const isExpanded = !!expandedProducts[p.id];
             return (
               <div
                 key={p.title}
                 id={`card-${p.id}`}
-                onClick={() => setActiveProduct(isExpanded ? null : p.id)}
+                onClick={() => toggleProduct(p.id)}
                 className={`reveal glass-card p-8 md:p-10 flex flex-col justify-between transition-colors duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(0,255,136,0.15)] group cursor-pointer ${
                   isExpanded ? 'border-accent shadow-[0_0_30px_rgba(0,255,136,0.15)]' : ''
                 }`}
