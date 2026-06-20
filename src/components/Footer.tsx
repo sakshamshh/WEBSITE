@@ -12,10 +12,10 @@ const team = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-card-border py-12 md:py-16">
+    <footer className="border-t border-card-border py-8 md:py-10">
       <div className="section-container">
         {/* Top */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-3">

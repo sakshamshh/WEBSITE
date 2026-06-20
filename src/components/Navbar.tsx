@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
+function scrollToHash(href: string) {
+  const id = href.replace('#', '');
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,7 +34,11 @@ export default function Navbar() {
     >
       <div className="section-container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a
+          href="#"
+          className="flex items-center gap-3 group"
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
           <span className="green-dot" />
           <span className="text-white font-[800] text-xl tracking-tight">AURIS</span>
         </a>
@@ -37,6 +49,7 @@ export default function Navbar() {
             <a
               key={l.label}
               href={l.href}
+              onClick={(e) => { e.preventDefault(); scrollToHash(l.href); }}
               className="text-text-muted hover:text-white text-sm font-medium transition-colors duration-300"
             >
               {l.label}
@@ -75,7 +88,7 @@ export default function Navbar() {
               key={l.label}
               href={l.href}
               className="text-text-muted hover:text-white text-base font-medium transition-colors"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => { e.preventDefault(); scrollToHash(l.href); setMobileOpen(false); }}
             >
               {l.label}
             </a>
