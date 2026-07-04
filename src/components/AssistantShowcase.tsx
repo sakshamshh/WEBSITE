@@ -22,7 +22,7 @@ export default function AssistantShowcase() {
               AI CHATBOT
             </p>
             <h2 className="text-3xl md:text-[2.25rem] font-bold tracking-[-0.02em] leading-[1.2] mb-5">
-              Talk to your factory. Literally.
+              Talk to your physical spaces. Literally.
             </h2>
             <p className="text-base md:text-lg text-[var(--color-text-body)] leading-[1.7] mb-8 max-w-lg">
               No more digging through complex dashboards or exporting CSVs. Just ask Auris questions in plain English and get answers backed by live camera data.
