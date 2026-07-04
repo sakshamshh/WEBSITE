@@ -16,9 +16,9 @@ export default function Footer() {
               className="flex items-center gap-2.5 mb-6 group inline-flex"
             >
               <img
-                src="/images/logo-original.jpeg"
+                src="/images/logo2.svg"
                 alt="Skym Labs"
-                className="h-10 w-auto mix-blend-multiply opacity-80 group-hover:opacity-100 transition-all duration-300"
+                className="h-8 w-auto opacity-80 group-hover:opacity-100 transition-all duration-300"
               />
               <span className="text-[var(--color-text-primary)] font-bold tracking-tight">
                 Skym Labs Pvt. Ltd.

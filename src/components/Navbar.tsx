@@ -40,9 +40,9 @@ export default function Navbar() {
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
           <img
-            src="/images/logo-original.jpeg"
+            src="/images/logo2.svg"
             alt="Skym Labs"
-            className="h-16 w-auto mix-blend-multiply"
+            className="h-12 w-auto"
           />
           <span className="text-[var(--color-text-primary)] font-bold text-xl tracking-tight hidden sm:block">
             Skym Labs
