@@ -26,36 +26,35 @@ export default function HowItWorks() {
   const containerRef = useRevealMany();
 
   return (
-    <section className="py-16 md:py-20" ref={containerRef}>
-      <div className="section-container">
-        <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] text-center mb-20">
-          Live in 30 minutes.
+    <section id="how-it-works" className="py-16 md:py-24 overflow-hidden" ref={containerRef}>
+      <div className="section-container relative">
+        <h2 className="reveal text-3xl md:text-[2.25rem] font-bold text-center tracking-[-0.02em] leading-[1.2] mb-16">
+          How Auris is deployed.
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {/* Connecting lines (desktop) */}
-          <div className="hidden md:block absolute top-[60px] left-[calc(33.33%+16px)] right-[calc(33.33%+16px)] h-[2px]">
-            <div className="reveal step-line w-full" />
-          </div>
-
-          {steps.map((s) => (
-            <div key={s.num} className="reveal text-center relative">
-              {/* Step number */}
-              <div className="text-5xl md:text-6xl font-[800] gradient-text mb-6 leading-none">
-                {s.num}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative z-10">
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={i} className="reveal relative group">
+                <div className="text-[3.5rem] md:text-6xl font-bold text-[var(--color-accent)] mb-6 leading-none opacity-20 group-hover:opacity-100 transition-opacity duration-300">
+                  {step.num}
+                </div>
+                
+                <div className="w-14 h-14 rounded-2xl bg-[var(--color-bg-alt)] border border-[var(--color-border)] flex items-center justify-center mx-auto mb-6 shadow-sm">
+                  <Icon size={24} className="text-[var(--color-accent)]" />
+                </div>
+                
+                <h3 className="text-xl font-semibold tracking-[-0.02em] mb-3 text-[var(--color-text-primary)]">
+                  {step.title}
+                </h3>
+                
+                <p className="text-sm text-[var(--color-text-body)] leading-relaxed max-w-xs mx-auto">
+                  {step.desc}
+                </p>
               </div>
-
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-card-border flex items-center justify-center mx-auto mb-6">
-                <s.icon size={24} className="text-accent" />
-              </div>
-
-              <h3 className="text-xl font-[700] mb-3 tracking-normal">{s.title}</h3>
-              <p className="text-text-muted text-sm leading-relaxed max-w-xs mx-auto">
-                {s.desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

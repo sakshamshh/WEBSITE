@@ -23,25 +23,34 @@ export default function Problem() {
   const containerRef = useRevealMany();
 
   return (
-    <section id="how-it-works" className="py-16 md:py-20" ref={containerRef}>
-      <div className="section-container text-center">
-        <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] mb-5">
-          Most physical spaces operate blind.
-        </h2>
-        <p className="reveal text-text-muted text-base md:text-lg max-w-xl mx-auto mb-16">
-          You can't improve what you can't see. Today, the operational floor is a black box.
-        </p>
+    <section className="py-16 md:py-24" ref={containerRef}>
+      <div className="section-container">
+        <div className="text-center mb-16">
+          <h2 className="reveal text-3xl md:text-[2.25rem] font-bold tracking-[-0.02em] leading-[1.2] mb-4">
+            The Problem with Physical Operations
+          </h2>
+          <p className="reveal text-[var(--color-text-body)] text-base md:text-lg max-w-2xl mx-auto leading-[1.7]">
+            You have cameras everywhere, but they only record history. Meanwhile, your floor runs blind to what's happening right now.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {problems.map((p) => (
-            <div key={p.title} className="reveal glass-card-red p-8 text-left">
-              <div className="w-12 h-12 rounded-xl bg-[rgba(255,80,80,0.1)] flex items-center justify-center mb-6">
-                <p.icon size={24} className="text-[#ff5050]" />
+          {problems.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <div key={i} className="reveal card p-8 flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-xl bg-[var(--color-bg-alt)] border border-[var(--color-border)] flex items-center justify-center mb-6">
+                  <Icon size={24} className="text-[var(--color-text-muted)]" />
+                </div>
+                <h3 className="text-xl font-semibold tracking-[-0.02em] mb-3 text-[var(--color-text-primary)]">
+                  {p.title}
+                </h3>
+                <p className="text-[var(--color-text-body)] text-sm leading-relaxed">
+                  {p.desc}
+                </p>
               </div>
-              <h3 className="text-xl font-[700] mb-3 tracking-normal">{p.title}</h3>
-              <p className="text-text-muted text-sm leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

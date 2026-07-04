@@ -1,70 +1,66 @@
-const footerLinks = [
-  { label: 'Product', href: '#products' },
-  { label: 'How it Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
-];
-
+import { Phone, Mail } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-card-border py-6 md:py-8">
+    <footer className="bg-[var(--color-surface)] border-t border-[var(--color-border)] pt-16 pb-8">
       <div className="section-container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+          
           {/* Brand */}
           <div>
-            <span className="text-white font-[800] text-xl tracking-tight opacity-40">
-              SKYM LABS<span className="text-accent">.</span>
-            </span>
-            <p className="text-text-muted text-xs mt-2">AI intelligence for the physical world.</p>
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="flex items-center gap-2.5 mb-6 group inline-flex"
+            >
+              <img
+                src="/images/logo-owl.png"
+                alt="Skym Labs"
+                className="h-6 w-auto grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+              />
+              <span className="text-[var(--color-text-primary)] font-bold tracking-tight">
+                Skym Labs Pvt. Ltd.
+              </span>
+            </a>
+            <p className="text-sm text-[var(--color-text-body)] max-w-xs leading-relaxed">
+              Real-time intelligence for physical operations. We turn your existing cameras into an active management system.
+            </p>
           </div>
 
-          {/* Links */}
-          <div>
-            <h4 className="text-white text-xs font-semibold mb-3 tracking-normal uppercase opacity-50">Links</h4>
-            <ul className="space-y-1.5">
-              {footerLinks.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className="text-text-muted text-sm hover:text-white transition-colors"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Founders & Contact */}
-          <div>
-            <h4 className="text-white text-xs font-semibold mb-3 tracking-normal uppercase opacity-50">Founders</h4>
-            <div className="space-y-1 mb-6">
-              <p className="text-white text-sm font-medium">Saksham Sharma</p>
-              <p className="text-white text-sm font-medium">Ayush Ranjan</p>
-            </div>
-
-            <h4 className="text-white text-xs font-semibold mb-3 tracking-normal uppercase opacity-50">Contact</h4>
-            <div className="space-y-2">
+          {/* Contact Links */}
+          <div className="md:text-right flex flex-col md:items-end justify-center">
+            <h4 className="text-sm font-semibold tracking-[-0.01em] text-[var(--color-text-primary)] mb-4">Contact Us</h4>
+            <div className="space-y-3">
               <a
-                href="tel:+918178332368"
-                className="text-text-muted text-xs hover:text-accent transition-colors block"
+                href="https://wa.me/918178332368"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center md:justify-end gap-2 text-sm text-[var(--color-text-body)] hover:text-[var(--color-accent)] transition-colors"
               >
-                +91 81783 32368
+                <Phone size={16} />
+                +91 817 833 2368
               </a>
               <a
                 href="mailto:contactus@skymlabs.com"
-                className="text-text-muted text-xs hover:text-accent transition-colors block"
+                className="flex items-center md:justify-end gap-2 text-sm text-[var(--color-text-body)] hover:text-[var(--color-accent)] transition-colors"
               >
+                <Mail size={16} />
                 contactus@skymlabs.com
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-card-border pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-text-muted text-xs">© 2026 Skym Labs Pvt Ltd</p>
-          <p className="text-text-muted text-xs">Built in India 🇮🇳</p>
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-[var(--color-border)] gap-4">
+          <p className="text-sm text-[var(--color-text-muted)]">
+            © {currentYear} Skym Labs Pvt. Ltd. All rights reserved.
+          </p>
+          <p className="text-sm font-medium text-[var(--color-text-muted)]">
+            Auris is a product of Skym Labs Pvt Ltd
+          </p>
         </div>
       </div>
     </footer>

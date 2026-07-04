@@ -1,67 +1,61 @@
 import { Check } from 'lucide-react';
 import { useRevealMany } from '../lib/hooks';
-
-const features = [
-  'Live floor context, always current',
-  'Remembers every conversation',
-  'Instant answers, no dashboards to dig through',
-];
+import BrowserMockup from './BrowserMockup';
 
 export default function AssistantShowcase() {
   const containerRef = useRevealMany();
 
+  const features = [
+    'Live floor context, always current',
+    'Remembers every conversation',
+    'Instant answers, no dashboards to dig through',
+  ];
+
   return (
-    <section id="product" className="py-16 md:py-20" ref={containerRef}>
+    <section id="product" className="py-16 md:py-24 overflow-hidden" ref={containerRef}>
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Text side */}
-          <div className="order-2 lg:order-1">
-            <p className="reveal text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-              AI Assistant
+          
+          {/* Text Content */}
+          <div className="reveal order-2 lg:order-1">
+            <p className="text-[var(--color-accent)] text-xs font-semibold tracking-[0.15em] uppercase mb-4">
+              AI CHATBOT
             </p>
-            <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] mb-6">
-              Ask anything.
-              <br />
-              Know everything.
+            <h2 className="text-3xl md:text-[2.25rem] font-bold tracking-[-0.02em] leading-[1.2] mb-5">
+              Talk to your factory. Literally.
             </h2>
-            <p className="reveal text-text-muted text-base md:text-lg mb-8 max-w-lg leading-relaxed">
-              A space-aware AI trained on your floor. It knows your shift timings, peak hours,
-              and worker activity. Ask in plain English, get answers in seconds.
+            <p className="text-base md:text-lg text-[var(--color-text-body)] leading-[1.7] mb-8 max-w-lg">
+              No more digging through complex dashboards or exporting CSVs. Just ask Auris questions in plain English and get answers backed by live camera data.
             </p>
 
-            <div className="space-y-4">
-              {features.map((f) => (
-                <div key={f} className="reveal flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check size={14} className="text-accent" />
+            <div className="space-y-4 mb-10">
+              {features.map((f, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="check-circle">
+                    <Check size={13} className="text-[var(--color-accent)]" />
                   </div>
-                  <span className="text-sm md:text-base text-text-muted">{f}</span>
+                  <span className="text-sm md:text-base text-[var(--color-text-body)] font-medium">
+                    {f}
+                  </span>
                 </div>
               ))}
             </div>
+
+            <a
+              href="https://wa.me/918178332368"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Request Demo
+            </a>
           </div>
 
-          {/* Image side */}
-          <div className="reveal order-1 lg:order-2 relative">
-            <div className="float-anim-alt">
-              <div className="image-frame glow-cyan">
-                <img
-                  src="/images/assistant.png"
-                  alt="Auris AI Assistant"
-                  loading="eager"
-                />
-              </div>
-            </div>
-            {/* Glow underneath */}
-            <div
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-12 rounded-full pointer-events-none"
-              style={{
-                background:
-                  'radial-gradient(ellipse at center, rgba(0,212,255,0.25) 0%, transparent 70%)',
-                filter: 'blur(16px)',
-              }}
-            />
+          {/* Image/Mockup */}
+          <div className="reveal order-1 lg:order-2 w-full">
+            <BrowserMockup src="/images/assistant.png" alt="Auris AI Assistant" />
           </div>
+
         </div>
       </div>
     </section>

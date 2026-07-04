@@ -28,19 +28,24 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'navbar-scrolled' : ''
       }`}
     >
-      <div className="section-container flex items-center justify-between h-16 md:h-20">
-        {/* Logo */}
+      <div className="section-container flex items-center justify-between h-16 md:h-[72px]">
+        {/* Logo: owl mark + Auris */}
         <a
           href="#"
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-2.5 group"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
-          <span className="text-white font-[800] text-xl tracking-tight">
-            SKYM LABS<span className="text-accent">.</span>
+          <img
+            src="/images/logo-owl.png"
+            alt="Skym Labs"
+            className="h-8 w-auto"
+          />
+          <span className="text-[var(--color-text-primary)] font-bold text-lg tracking-tight">
+            Auris
           </span>
         </a>
 
@@ -51,7 +56,7 @@ export default function Navbar() {
               key={l.label}
               href={l.href}
               onClick={(e) => { e.preventDefault(); scrollToHash(l.href); }}
-              className="text-text-muted hover:text-white text-sm font-medium transition-colors duration-300"
+              className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] text-sm font-medium transition-colors duration-200"
             >
               {l.label}
             </a>
@@ -60,7 +65,7 @@ export default function Navbar() {
             href="https://wa.me/918178332368"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline !py-2.5 !px-6 !text-sm !rounded-lg"
+            className="btn-primary !py-2.5 !px-5 !text-sm"
           >
             Request Demo
           </a>
@@ -68,7 +73,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden text-[var(--color-text-primary)] p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -78,17 +83,17 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
           mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
         }`}
-        style={{ background: 'rgba(10, 15, 30, 0.95)', backdropFilter: 'blur(16px)' }}
+        style={{ background: 'rgba(255, 255, 255, 0.97)', backdropFilter: 'blur(12px)' }}
       >
-        <div className="section-container py-6 flex flex-col gap-4">
+        <div className="section-container py-5 flex flex-col gap-3 border-t border-[var(--color-border)]">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className="text-text-muted hover:text-white text-base font-medium transition-colors"
+              className="text-[var(--color-text-body)] hover:text-[var(--color-text-primary)] text-base font-medium transition-colors py-1"
               onClick={(e) => { e.preventDefault(); scrollToHash(l.href); setMobileOpen(false); }}
             >
               {l.label}

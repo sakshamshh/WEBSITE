@@ -133,90 +133,83 @@ export default function Products() {
   };
 
   return (
-    <section id="products" className="py-16 md:py-24" ref={containerRef}>
+    <section id="products" className="py-16 md:py-24 bg-[var(--color-bg-alt)]" ref={containerRef}>
       <div className="section-container">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-[800] mb-4">
+        <div className="text-center mb-14">
+          <h2 className="reveal text-3xl md:text-[2.25rem] font-bold tracking-[-0.02em] leading-[1.2] mb-4">
             The Auris Product Line
           </h2>
-          <p className="reveal text-text-muted text-base md:text-lg max-w-xl mx-auto">
+          <p className="reveal text-[var(--color-text-body)] text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
             One platform. Every physical space.
           </p>
         </div>
 
         {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {products.map((p) => {
             const Icon = p.icon;
             const isExpanded = !!expandedProducts[p.id];
             return (
-              <div key={p.title} className="reveal h-full">
+              <div key={p.title} className="reveal">
                 <div
                   id={`card-${p.id}`}
                   onClick={() => toggleProduct(p.id)}
-                  className={`glass-card p-8 md:p-10 h-full flex flex-col justify-between transition-colors duration-300 hover:border-accent hover:shadow-[0_0_30px_rgba(0,255,136,0.15)] group cursor-pointer ${
-                    isExpanded ? 'border-accent shadow-[0_0_30px_rgba(0,255,136,0.15)]' : ''
+                  className={`card p-8 h-full flex flex-col justify-between cursor-pointer ${
+                    isExpanded ? 'border-[var(--color-accent)] shadow-[0_2px_16px_rgba(196,122,74,0.1)]' : ''
                   }`}
                 >
                 <div>
-                  {/* Card Header with Icon and Badge */}
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="w-14 h-14 rounded-2xl bg-accent/5 border border-card-border flex items-center justify-center group-hover:border-accent/40 transition-colors duration-300">
-                      <Icon size={28} className="text-accent" />
+                  {/* Card Header with Icon */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--color-bg-alt)] border border-[var(--color-border)] flex items-center justify-center">
+                      <Icon size={24} className="text-[var(--color-accent)]" />
                     </div>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      Live
-                    </span>
                   </div>
 
                   {/* Title and Description */}
-                  <h3 className="text-2xl font-[800] text-white mb-4">{p.title}</h3>
-                  <p className="text-text-muted text-sm md:text-base leading-relaxed mb-4">
+                  <h3 className="text-xl font-semibold tracking-[-0.02em] text-[var(--color-text-primary)] mb-3">{p.title}</h3>
+                  <p className="text-[var(--color-text-body)] text-sm leading-relaxed mb-3">
                     {p.desc}
                   </p>
 
                   {/* Expandable Details Container */}
                   <div
                     onClick={(e) => e.stopPropagation()}
-                    className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                    className={`transition-all duration-400 ease-in-out overflow-hidden ${
                       isExpanded
-                        ? 'max-h-[1000px] opacity-100 mt-6 pt-6 border-t border-card-border/40'
+                        ? 'max-h-[1000px] opacity-100 mt-5 pt-5 border-t border-[var(--color-border)]'
                         : 'max-h-0 opacity-0'
                     }`}
                   >
                     <div>
-                      <div className="space-y-6">
-                        <p className="text-text-muted text-sm md:text-base leading-relaxed">
+                      <div className="space-y-5">
+                        <p className="text-[var(--color-text-body)] text-sm leading-relaxed">
                           {p.detailedDesc}
                         </p>
 
                         {/* Standard Features */}
-                        <ul className="space-y-4">
+                        <ul className="space-y-3">
                           {p.features.map((f, idx) => (
-                            <li key={idx} className="flex items-start gap-3 text-sm text-text-muted">
-                              <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5 border border-accent/20">
-                                <Check size={12} className="text-accent" />
+                            <li key={idx} className="flex items-start gap-3 text-sm text-[var(--color-text-body)]">
+                              <div className="check-circle mt-0.5">
+                                <Check size={13} className="text-[var(--color-accent)]" />
                               </div>
                               <span className="leading-relaxed">
-                                <strong className="text-white font-semibold">{f.title}</strong> — {f.desc}
+                                <strong className="text-[var(--color-text-primary)] font-semibold">{f.title}</strong> — {f.desc}
                               </span>
                             </li>
                           ))}
                         </ul>
 
-                        {/* Highlighted Chatbot Feature */}
-                        <div className="p-4 rounded-xl bg-accent/[0.03] border border-accent/20 shadow-[0_0_15px_rgba(0,255,136,0.05)] relative overflow-hidden group/chatbot">
-                          <div className="absolute inset-0 bg-gradient-to-r from-accent/[0.02] to-transparent pointer-events-none" />
-                          <div className="flex items-start gap-3 relative z-10">
-                            <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5 border border-accent/30 shadow-[0_0_8px_rgba(0,255,136,0.2)]">
-                              <Check size={12} className="text-accent" />
-                            </div>
-                            <span className="text-sm text-text-muted leading-relaxed">
-                              <strong className="text-accent font-bold">{p.chatbotFeature.title}</strong> — {p.chatbotFeature.desc}
-                            </span>
+                        {/* Chatbot Feature — styled as a regular checklist item */}
+                        <div className="flex items-start gap-3 text-sm text-[var(--color-text-body)]">
+                          <div className="check-circle mt-0.5">
+                            <Check size={13} className="text-[var(--color-accent)]" />
                           </div>
+                          <span className="leading-relaxed">
+                            <strong className="text-[var(--color-text-primary)] font-semibold">{p.chatbotFeature.title}</strong> — {p.chatbotFeature.desc}
+                          </span>
                         </div>
 
                         <div className="pt-2">
@@ -225,7 +218,7 @@ export default function Products() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="btn-primary w-full justify-center text-sm font-semibold"
+                            className="btn-primary w-full justify-center text-sm"
                           >
                             Request Demo
                           </a>
@@ -237,12 +230,12 @@ export default function Products() {
 
                 {/* Arrow indicator at the bottom */}
                 <div
-                  className={`mt-6 pt-4 border-t border-card-border/20 flex items-center justify-between text-sm font-semibold text-accent hover:text-white transition-colors duration-300 ${
+                  className={`mt-5 pt-4 border-t border-[var(--color-border)] flex items-center justify-between text-sm font-semibold text-[var(--color-accent)] ${
                     isExpanded ? 'hidden' : ''
                   }`}
                 >
                   <span>Learn More</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="transition-transform duration-200" />
                 </div>
                 </div>
               </div>
