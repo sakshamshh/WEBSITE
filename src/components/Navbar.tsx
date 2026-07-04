@@ -36,16 +36,16 @@ export default function Navbar() {
         {/* Logo: owl mark + Auris */}
         <a
           href="#"
-          className="flex items-center gap-2.5 group"
+          className="flex items-center gap-3 group"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
           <img
             src="/images/logo-owl.png"
             alt="Skym Labs"
-            className="h-8 w-auto"
+            className="h-10 w-auto"
           />
-          <span className="text-[var(--color-text-primary)] font-bold text-lg tracking-tight">
-            Auris
+          <span className="text-[var(--color-text-primary)] font-bold text-xl tracking-tight">
+            Skym Labs
           </span>
         </a>
 
